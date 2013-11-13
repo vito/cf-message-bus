@@ -10,7 +10,7 @@ module CfMessageBus
       @logger = config[:logger]
       @internal_bus = MessageBusFactory.message_bus(config[:uri])
       @subscriptions = {}
-      @internal_bus.on_reconnect { start_internal_bus_recovery }
+      @internal_bus.on_connect { start_internal_bus_recovery }
       @recovery_callback = lambda {}
     end
 
